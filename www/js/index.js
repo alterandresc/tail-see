@@ -33,9 +33,9 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        //app.receivedEvent('deviceready');
+        app.receivedEvent('deviceready');
         //app.loadGoogleMaps();
-      app.showAlert();
+     // app.showAlert();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -45,7 +45,7 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
+	app.showAlert();
         console.log('Received Event: ' + id);
     }
 
@@ -69,24 +69,14 @@ var app = {
       document.body.appendChild(script);
     }
     
-    alertar: function()
-    {
-      alert("hola termino de cargar");	
-    }
-    
     showAlert: function()
     {
       navigator.notification.alert(
 	'Eres el ganador!',     // mensaje (message)
-	alertDismissed,         // función 'callback' (alertCallback)
+	loadGoogleMaps,         // función 'callback' (alertCallback)
 	'Game Over',            // titulo (title)
 	'Cerrar'                // nombre del botón (buttonName)
       );
     }
 };
 
-function alertin()
-{
-  
-  alert("hill!");
-}
