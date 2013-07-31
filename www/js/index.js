@@ -45,35 +45,15 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-	app.showAlert();
+	//app.showAlert();
         console.log('Received Event: ' + id);
-    }
-
-    loadGoogleMaps: function()
-    {
-      var mapOptions =
-      {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
-       document.getElementById('prueba').innerHTML = "ALgo funciono";
-    }
-
-    loadScript:function()
-    {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyB6wzeNjiXbHStSt8zDFDkh0SlmdUyLqQQ&sensor=false";
-      document.body.appendChild(script);
     }
     
     showAlert: function()
     {
       navigator.notification.alert(
 	'Eres el ganador!',     // mensaje (message)
-	loadGoogleMaps,         // función 'callback' (alertCallback)
+	app.loadGoogleMaps,         // función 'callback' (alertCallback)
 	'Game Over',            // titulo (title)
 	'Cerrar'                // nombre del botón (buttonName)
       );
