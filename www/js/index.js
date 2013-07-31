@@ -34,7 +34,8 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         //app.receivedEvent('deviceready');
-        app.loadGoogleMaps();
+        //app.loadGoogleMaps();
+      app.showAlert();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -67,4 +68,25 @@ var app = {
       script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyB6wzeNjiXbHStSt8zDFDkh0SlmdUyLqQQ&sensor=false";
       document.body.appendChild(script);
     }
+    
+    alertar: function()
+    {
+      alert("hola termino de cargar");	
+    }
+    
+    showAlert: function()
+    {
+      navigator.notification.alert(
+	'Eres el ganador!',     // mensaje (message)
+	alertDismissed,         // función 'callback' (alertCallback)
+	'Game Over',            // titulo (title)
+	'Cerrar'                // nombre del botón (buttonName)
+      );
+    }
 };
+
+function alertin()
+{
+  
+  alert("hill!");
+}
