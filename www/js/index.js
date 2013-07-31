@@ -34,7 +34,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         //app.receivedEvent('deviceready');
-        app.loadScript();
+        app.loadGoogleMaps();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -56,8 +56,7 @@ var app = {
           zoom: 8,
           mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      var map = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
+      var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
        document.getElementById('prueba').innerHTML = "ALgo funciono";
     }
 
@@ -65,7 +64,7 @@ var app = {
     {
       var script = document.createElement("script");
       script.type = "text/javascript";
-      script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyB6wzeNjiXbHStSt8zDFDkh0SlmdUyLqQQ&sensor=false&callback=app.loadGoogleMaps";
+      script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyB6wzeNjiXbHStSt8zDFDkh0SlmdUyLqQQ&sensor=false";
       document.body.appendChild(script);
     }
 };
