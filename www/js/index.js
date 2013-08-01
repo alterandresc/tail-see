@@ -43,7 +43,18 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
+	app.showAlert();
         console.log('Received Event: ' + id);
+    },
+    
+    showAlert: function()
+    {
+      
+     navigator.notification.alert(
+      'Eres el ganador!',     // mensaje (message)
+      alertDismissed,         // función 'callback' (alertCallback)
+      'Game Over',            // titulo (title)
+      'Cerrar'                // nombre del botón (buttonName)
+      );
     }
 };
