@@ -34,29 +34,16 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        //app.loadGoogleMaps();
-     // app.showAlert();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+	var receivedElement = parentElement.querySelector('.received');
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-	//app.showAlert();
+
         console.log('Received Event: ' + id);
     }
-    
-    showAlert: function()
-    {
-      navigator.notification.alert(
-	'Eres el ganador!',     // mensaje (message)
-	app.loadGoogleMaps,         // función 'callback' (alertCallback)
-	'Game Over',            // titulo (title)
-	'Cerrar'                // nombre del botón (buttonName)
-      );
-    }
 };
-
