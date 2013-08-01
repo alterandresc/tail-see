@@ -46,7 +46,10 @@ var app = {
 	app.showAlert();
         console.log('Received Event: ' + id);
     },
-    
+    alertDismissed: function()
+    {
+      console.log('called function');
+    },
     showAlert: function()
     {
       
@@ -56,5 +59,5 @@ var app = {
       'Game Over',            // titulo (title)
       'Cerrar'                // nombre del botón (buttonName)
       );
-    }
+    },
 };
