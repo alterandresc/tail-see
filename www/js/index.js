@@ -16,6 +16,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+$(document).ready(function() {
+  app.initialize();
+});
+
+function loadScript()
+{
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyB6wzeNjiXbHStSt8zDFDkh0SlmdUyLqQQ&sensor=false&callback=app.initializeMap";
+  document.body.appendChild(script);
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -37,27 +50,24 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-	var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-	app.showAlert();
+	this.loadGoogleScript();
         console.log('Received Event: ' + id);
     },
-    alertDismissed: function()
+    loadGoogleScript:function()
     {
-      console.log('called function');
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyB6wzeNjiXbHStSt8zDFDkh0SlmdUyLqQQ&sensor=false&callback=app.initializeMap";
+      document.body.appendChild(script);  
     },
-    showAlert: function()
+    initializeMap: function()
     {
-      
-     navigator.notification.alert(
-      'Eres el ganador!',     // mensaje (message)
-      alertDismissed,         // función 'callback' (alertCallback)
-      'Game Over',            // titulo (title)
-      'Cerrar'                // nombre del botón (buttonName)
-      );
+      var mapOptions = {
+	zoom: 8,
+	center: new google.maps.LatLng(-34.397, 150.644),
+	mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
     },
+    
 };
