@@ -59,19 +59,26 @@ var app = {
       script.type = "text/javascript";
       script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyB6wzeNjiXbHStSt8zDFDkh0SlmdUyLqQQ&sensor=false&callback=app.initializeMap";
       document.body.appendChild(script);  
-    },
+    },writeGPS: function(position){
+		var currentPosition = new google.maps.LatLng(ubication.coords.latitude, ubication.coords.latitude),
+		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+		map.setCenter(currentPosition),
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		var marker = new google.maps.Marker({
+		  position: center, map:map
+		  });
+		},onError: function(){
+			alert("Error en el GPS")
+			},
     initializeMap: function()
     {
 	
       var mapOptions = {
 	zoom: 8,
-	center: new google.maps.LatLng(-34.397, 150.644),
-	mapTypeId: google.maps.MapTypeId.ROADMAP
+	navigator.geolocation.getCurrentPosition(writeGPS, onError),
+	//center: new google.maps.LatLng(-34.397, 150.644),
+	//mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-      var marker = new google.maps.Marker({
-		  position: center, map:map
-		  });
     },
     
 };
